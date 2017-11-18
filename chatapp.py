@@ -12,11 +12,14 @@ def index():
     return render_template('index.html')
 
 
+def messageRecived():
+    print('message was received!!!')
+
+
 @socketio.on('my event')
 def handle_my_custom_event(json_data):
-	json_data
-	print('received something: ', str(json_data).encode('utf-8'))
-	socketio.emit('my response', json_data)
+    print('received something: ', str(json_data))
+    socketio.emit('my response', json_data, callback=messageRecived)
 
 
 if __name__ == '__main__':
