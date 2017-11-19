@@ -35,13 +35,13 @@
 						<h1 style="color: #ccc;">No message yet</h1>
 						<div class="msg-wrapper"></div>
 					{% else %}
-						{% for message in messages %}
-							<div class="msg-wrapper">
+						<div class="msg-wrapper">
+							{% for message in messages %}
 								<div class="msgbbl">
 									<b>{{ message.user }}: </b>{{ message.message }}
 								</div>
-							</div>
-						{% endfor %}
+							{% endfor %}
+						</div>
 					{% endif %}
 				</div>
 			</div>
