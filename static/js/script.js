@@ -27,3 +27,12 @@ socket.on('my response', function(msg) {
 	}
 	console.log(msg);
 });
+
+
+var vote_up = $('.fa-thumbs-o-up').on('click', function() {
+	alert("Vash Golos Zas4itan!!!");
+	socket.emit('vote', {
+		msg: message
+	})
+	console.log('Hello Word');
+});
