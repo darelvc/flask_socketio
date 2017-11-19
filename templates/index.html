@@ -12,7 +12,7 @@
     <style>
     	div.msgbbl {
     		background-color: #ddd;
-    		padding: 10px 15px;
+    		padding: 5px 10px;
     		border-radius: 10px;
     		color: #555;
     		margin-bottom: 5px;
@@ -31,8 +31,18 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<div id="nomsg">
-					<h1 style="color: #ccc;">No message yet</h1>
-					<div class="msg-wrapper"></div>
+					{% if not messages %}
+						<h1 style="color: #ccc;">No message yet</h1>
+						<div class="msg-wrapper"></div>
+					{% else %}
+						{% for message in messages %}
+							<div class="msg-wrapper">
+								<div class="msgbbl">
+									<b>{{ message.user }}: </b>{{ message.message }}
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
 				</div>
 			</div>
 			<div class="col-sm-4">
@@ -40,12 +50,12 @@
 					<b>Type your message bellow span</b>
 					<hr>
 					<div class="form-group">
-						<label for="exampleInputEmail1">User name</label>
+						<label>User name</label>
 						<input type="text" class="form-control username"  placeholder="Enter user name">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Message</label>
-						<input type="text" class="form-control message" id="exampleInputPassword1" placeholder="Message">
+						<label>Message</label>
+						<input type="text" class="form-control message"  placeholder="Message">
 					</div>
 					<button type="submit" class="btn btn-primary">Send message</button>
 				</form>
@@ -60,6 +70,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
-    <script src="static/js/script.js"></script>
+    <script src="static/js/script.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
